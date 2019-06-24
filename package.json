@@ -4,8 +4,10 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.1.0",
     "async": "^1.5.2",
+    "fnv-plus": "^1.2.12",
     "google-protobuf": "^3.0.0",
     "grpc": "^1.11.0",
+    "grpc-health-check": "^1.6.6",
     "lodash": "^4.6.1"
   }
 }
