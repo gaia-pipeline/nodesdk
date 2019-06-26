@@ -1,6 +1,19 @@
 {
-  "name": "gaia-nodesdk",
+  "name": "@gaia-pipeline/nodesdk",
   "version": "0.1.0",
+  "description": "NodeJS SDK for Gaia. Allows you to write pipelines in nodejs.",
+  "main": "sdk.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaia-pipeline/nodesdk.git"
+  },
+  "author": "Michel Vocks",
+  "homepage": "https://gaia-pipeline.io",
+  "license": "Apache-2.0",
+  "bugs": {
+    "email": "michelvocks@gmail.com",
+    "url": "https://github.com/gaia-pipeline/gaia/issues"
+  },
   "dependencies": {
     "@grpc/proto-loader": "^0.1.0",
     "async": "^1.5.2",

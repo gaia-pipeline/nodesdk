@@ -160,13 +160,3 @@ function Serve(jobs) {
 module.exports = {
     Serve: Serve
 };
-
-let myjobs = [{
-    title: 'test job',
-    description: 'test desc',
-    handler: function () {
-        console.log('test 123');
-    }
-}];
-
-Serve(myjobs);
