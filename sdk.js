@@ -2,8 +2,8 @@ const PROTO_PATH = __dirname + '/plugin.proto';
 
 const _ = require('lodash');
 const grpc = require('grpc');
-const grpcHealth = require('./node_modules/grpc-health-check/health');
-const grpcHealthMessages = require('./node_modules/grpc-health-check/v1/health_pb');
+const grpcHealth = require('grpc-health-check/health');
+const grpcHealthMessages = require('grpc-health-check/v1/health_pb');
 const fnv = require('fnv-plus');
 const fs = require('fs');
 const protoLoader = require('@grpc/proto-loader');
