@@ -54,12 +54,12 @@ function executeJob(call, callback) {
     let job = null;
     let reqJob = call.request;
     for (let i = 0; i < cached_jobs.length; i++) {
-        if (cached_jobs[i].uniqueId() === reqJob.uniqueId()) {
+        if (cached_jobs[i].unique_id === reqJob.unique_id) {
             job = cached_jobs[i];
         }
     }
     if (!job) {
-        throw new Error('Job not found in plugin: ' + reqJob.toString());
+        throw new Error('Job not found in plugin: ' + JSON.stringify(reqJob, null, 0));
     }
 
     // Start user defined job
@@ -74,7 +74,7 @@ function executeJob(call, callback) {
         // Set other related information
         jobResult.exit_pipeline = true;
         jobResult.message = ex.toString();
-        jobResult.unique_id = reqJob.uniqueId();
+        jobResult.unique_id = reqJob.unique_id;
     }
 
     // Send JobResult obj
@@ -85,7 +85,7 @@ function Serve(jobs) {
     // Iterate all given jobs
     for (let i = 0; i < jobs.length; i++) {
         // Generate and set fnv 32bit hash
-        jobs[i].unique_id = fnv.hash(jobs[i].title);
+        jobs[i].unique_id = Number(fnv.hash(jobs[i].title, 32).dec());
 
         // Resolve dependent jobs
         if (jobs[i].depends_on) {
@@ -95,7 +95,7 @@ function Serve(jobs) {
                 for (let x = 0; x < jobs.length; x++) {
                     if (jobs[i].depends_on[z].toLowerCase() === jobs[i].title.toLowerCase()) {
                         foundDep = true;
-                        newDependsOn.push(fnv.hash(jobs[i].title));
+                        newDependsOn.push(Number(fnv.hash(jobs[i].title, 32).dec()));
                     }
                 }
 

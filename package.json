@@ -1,6 +1,6 @@
 {
   "name": "@gaia-pipeline/nodesdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "NodeJS SDK for Gaia. Allows you to write pipelines in nodejs.",
   "main": "sdk.js",
   "repository": {
