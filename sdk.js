@@ -93,9 +93,10 @@ function Serve(jobs) {
             for (let z = 0; z < jobs[i].depends_on.length; z++) {
                 let foundDep = false;
                 for (let x = 0; x < jobs.length; x++) {
-                    if (jobs[i].depends_on[z].toLowerCase() === jobs[i].title.toLowerCase()) {
+                    if (jobs[i].depends_on[z].toLowerCase() === jobs[x].title.toLowerCase()) {
                         foundDep = true;
-                        newDependsOn.push(Number(fnv.hash(jobs[i].title, 32).dec()));
+                        newDependsOn.push(Number(fnv.hash(jobs[x].title, 32).dec()));
+                        break;
                     }
                 }
 
