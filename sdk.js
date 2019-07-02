@@ -65,9 +65,9 @@ function executeJob(call, callback) {
     // Start user defined job
     let jobResult = {};
     try {
-        job.handler(reqJob.arguments);
+        job.handler(reqJob.args);
     } catch (ex) {
-        if (ex.toString() === ERR_EXIT_PIPELINE) {
+        if (ex.toString() !== ERR_EXIT_PIPELINE) {
             jobResult.failed = true;
         }
 
@@ -159,5 +159,6 @@ function Serve(jobs) {
 }
 
 module.exports = {
-    Serve: Serve
+    Serve: Serve,
+    ERR_EXIT_PIPELINE: ERR_EXIT_PIPELINE
 };
