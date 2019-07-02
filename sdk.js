@@ -88,12 +88,12 @@ function Serve(jobs) {
         jobs[i].unique_id = Number(fnv.hash(jobs[i].title, 32).dec());
 
         // Resolve dependent jobs
-        if (jobs[i].depends_on) {
+        if (jobs[i].dependson) {
             let newDependsOn = [];
-            for (let z = 0; z < jobs[i].depends_on.length; z++) {
+            for (let z = 0; z < jobs[i].dependson.length; z++) {
                 let foundDep = false;
                 for (let x = 0; x < jobs.length; x++) {
-                    if (jobs[i].depends_on[z].toLowerCase() === jobs[x].title.toLowerCase()) {
+                    if (jobs[i].dependson[z].toLowerCase() === jobs[x].title.toLowerCase()) {
                         foundDep = true;
                         newDependsOn.push(Number(fnv.hash(jobs[x].title, 32).dec()));
                         break;
@@ -101,12 +101,12 @@ function Serve(jobs) {
                 }
 
                 if (!foundDep) {
-                    throw new Error('job ' + jobs[i].title + ' has dependency ' + jobs[i].depends_on[z] + ' which is not declared');
+                    throw new Error('job ' + jobs[i].title + ' has dependency ' + jobs[i].dependson[z] + ' which is not declared');
                 }
             }
 
             // Set new depends on list
-            jobs[i].depends_on = newDependsOn;
+            jobs[i].dependson = newDependsOn;
         }
 
         // Check if two jobs have the same title which is restricted
